@@ -1,0 +1,62 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="Cadastro de Produtos" />
+	</ui:define>
+
+	<ui:define name="principal">
+		<h1>Cadastro de Produtos</h1>
+		<h:form id="formProduto">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Código" />
+				<p:inputText value="#{produtoMB.produto.codigo}" />
+
+				<p:outputLabel value="Descrição" />
+				<p:inputText value="#{produtoMB.produto.descricao}" />
+
+				<p:outputLabel value="Preço" />
+				<p:inputText value="#{produtoMB.produto.preco}" />
+			</p:panelGrid>
+
+			<p:commandButton value="Salvar" action="#{produtoMB.salvar()}"
+				update=":formProduto" />
+
+			<p:dataTable value="#{produtoMB.produtos}" var="aux">
+				<p:column headerText="Código">
+					<p:outputLabel value="#{aux.codigo}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="Descrição">
+					<p:outputLabel value="#{aux.descricao}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="Preço">
+					<p:outputLabel value="#{aux.preco}"></p:outputLabel>
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
