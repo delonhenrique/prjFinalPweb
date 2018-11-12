@@ -1,7 +1,13 @@
 package entidades;
 
-public class Pessoa {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class Pessoa {
+	
+	@Id
+	private String cpf;
 	private String nome;
 	private String endereco;
 	private String dataNasc;
@@ -15,7 +21,6 @@ public class Pessoa {
 	private String sexo;
 	private String estadoCivil;
 	private String rg;
-	private String cpf;
 	private String email;
 	
 	public String getNome() {

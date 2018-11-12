@@ -1,9 +1,10 @@
 package service;
 
 import java.io.Serializable;
-
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 
 public abstract class Service <T, I extends Serializable> {
