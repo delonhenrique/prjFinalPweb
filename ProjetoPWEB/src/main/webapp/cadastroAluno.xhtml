@@ -1,0 +1,93 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="Início" />
+	</ui:define>
+
+	<ui:define name="principal">
+		<style type="text/css">
+    		.value {
+        		font-weight: bold;
+    		}
+		</style>
+		
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="cpf" value="CPF: " />
+        		<p:inputMask id="cpf" value="#{maskView.cpf}" mask="999.999.999-99"/>
+        		
+        		<p:outputLabel for="nome" value="Nome: " />
+        		<p:inputText id="nome" />
+        		
+        		<p:outputLabel for="dataNasc" value="Data Nascimento: " />
+        		<p:inputMask id="dataNasc" value="#{maskView.dataNasc}" mask="99/99/9999"/>
+        		
+        		<p:outputLabel for="sexo" value="Sexo: " />
+        		<p:selectOneMenu id="sexo" value="#{selectOneMenuView.sexo}" style="width:125px">
+            		<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+            		<f:selectItem itemLabel="Feminino" itemValue="Feminino" />          		
+        		</p:selectOneMenu>
+        		
+        		<p:outputLabel for="estadoCivil" value="Estado Civil: " />
+        		<p:selectOneMenu id="estadoCivil" value="#{selectOneMenuView.estadoCivil}" style="width:125px">
+            		<f:selectItem itemLabel="Solteiro" itemValue="Solteiro" />
+            		<f:selectItem itemLabel="Casado" itemValue="Casado" />
+            		<f:selectItem itemLabel="Divorciado" itemValue="Divorciado" />
+            		<f:selectItem itemLabel="Viuvo" itemValue="Viuvo" />          		
+        		</p:selectOneMenu>
+        		
+        		<p:outputLabel for="escolaridade" value="Sexo: " />
+        		<p:selectOneMenu id="escolaridade" value="#{selectOneMenuView.sexo}" style="width:125px">
+            		<f:selectItem itemLabel="Fundamental Incompleto" itemValue="Fundamental Incompleto" />
+            		<f:selectItem itemLabel="Fundamental Completo" itemValue="Fundamental Completo" />
+            		<f:selectItem itemLabel="Medio Incompleto" itemValue="Medio Incompleto" />
+            		<f:selectItem itemLabel="Medio Completo" itemValue="Medio Completo" />
+            		<f:selectItem itemLabel="Superior Incompleto" itemValue="Superior Incompleto" />
+            		<f:selectItem itemLabel="Superior Completo" itemValue="Superior Completo" />          		
+        		</p:selectOneMenu>
+        		
+        		<p:outputLabel for="endereco" value="Endereço: " />
+        		<p:inputText id="endereco" />
+        		
+        		<p:outputLabel for="num" value="Número: " />
+        		<p:inputText id="num" />
+        		
+        		<p:outputLabel for="bairro" value="Bairro: " />
+        		<p:inputText id="bairro" />
+        		
+        		<p:outputLabel for="cidade" value="Cidade: " />
+        		<p:inputText id="cidade" />
+        		
+        		<p:outputLabel for="cep" value="CEP: " />
+        		<p:inputMask id="cep" value="#{maskView.cep}" mask="99999-999"/>
+        		
+			</h:panelGrid>
+		</h:form>
+			
+			
+	</ui:define>
+	
+	
+</ui:composition>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
