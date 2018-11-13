@@ -1,0 +1,57 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="Cadastrar Curso" />
+	</ui:define>
+
+	<ui:define name="principal">
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="sigla" value="Sigla: " />
+		        <p:inputText id="sigla" />
+		        
+		        <p:outputLabel for="nomeCurso" value="Nome do curso: " />
+		        <p:inputText id="nomeCurso" />
+		        
+		        <p:outputLabel for="cargaHoraria" value="Carga horária: " />
+		        <p:inputText id="cargaHoraria" />
+		        
+		        <p:outputLabel for="valorCurso" value="Valor do curso: " />
+		        <p:inputText id="valorCurso" />
+		        
+		        <p:outputLabel for="programaCurso" value="Programa do curso: " />
+		        <p:inputText id="programaCurso" />
+		        
+		        <p:outputLabel for="dataVigencia" value="Data de vigência " />
+		        <p:inputMask id="dataVigencia" value="#{maskView.dataVigencia}" mask="99/99/9999"/>
+		        
+		        <p:outputLabel for="valorInstrutor" value="Valor hora do instrutor: " />
+		        <p:inputText id="valorInstrutor" />
+		        
+			</h:panelGrid>
+		</h:form>
+        
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

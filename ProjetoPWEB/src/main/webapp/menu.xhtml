@@ -5,21 +5,17 @@
 	xmlns:p="http://primefaces.org/ui">
 	<h:form>
 	<p:menubar>
-		<p:submenu label="Cadastro">
-			<p:submenu label="Produto">
-				<p:menuitem value="Produto" url="cadastroProduto.xhtml" ></p:menuitem>
-				<p:menuitem value="Tela1"   url="tela1.xhtml"></p:menuitem>
-				<p:menuitem value="Tela2"   url="tela2.xhtml"></p:menuitem>
-			</p:submenu>
-			<p:menuitem value="Menu2"></p:menuitem>
+		<p:submenu label="Cadastro">			
+			<p:menuitem value="Curso" url="cadastroCurso.xhtml" ></p:menuitem>
+			<p:menuitem value="Turma"   url="cadastroTurma.xhtml"></p:menuitem>
+			<p:menuitem value="Instrutor"   url="cadastroInstrutor.xhtml"></p:menuitem>
+			<p:menuitem value="Aluno" url="cadastroAluno.xhtml" ></p:menuitem>											
 			<p:separator/>
-			<p:menuitem value="Menu3"></p:menuitem>
+			<p:menuitem value="Sair"></p:menuitem>
 		</p:submenu>
-		<p:submenu label="Help">
-			<p:menuitem value="About JournalDev"></p:menuitem>
-			<p:menuitem value="Contact Us"></p:menuitem>
-			<p:separator/>
-			<p:menuitem value="Help"></p:menuitem>
+		<p:submenu label="Oerações">
+			<p:menuitem value="Alocar Instrutor"></p:menuitem>
+			<p:menuitem value="Efetuar Matrícula"></p:menuitem>
 		</p:submenu>
 	</p:menubar>
 </h:form>
