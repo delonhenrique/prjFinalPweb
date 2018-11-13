@@ -1,0 +1,71 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="Cadastrar Turma" />
+	</ui:define>
+
+	<ui:define name="principal">
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="curso" value="Curso: " />
+	        	<p:selectOneMenu id="curso" value="#{selectOneMenuView.curso}" effect="fold" editable="true">
+	            	<f:selectItem itemLabel="Selecione o curso" itemValue="" />
+	            	<f:selectItems value="#{selectOneMenuView.cursos}" />
+	        	</p:selectOneMenu>
+			
+				<p:outputLabel for="siglaTurma" value="Sigla da turma: " />
+		        <p:inputText id="siglaTurma" />
+		        
+		        <p:outputLabel for="nomeTurma" value="Nome da turma: " />
+		        <p:inputText id="nomeTurma" />
+		        
+		        <p:outputLabel for="qtdeVagas" value="Quantidade de vagas: " />
+		        <p:inputText id="qtdeVagas" />
+		        
+		        <p:outputLabel for="periodo" value="Período: " />
+        		<p:selectOneMenu id="periodo" value="#{selectOneMenuView.periodo}" style="width:125px">
+            		<f:selectItem itemLabel="Manhã" itemValue="Manhã" />
+            		<f:selectItem itemLabel="Tarde" itemValue="Tarde" />
+            		<f:selectItem itemLabel="Noite" itemValue="Noite" />            		       		
+        		</p:selectOneMenu>
+		        		 		        
+		        <p:outputLabel for="dataInicio" value="Data Início: " />
+        		<p:inputMask id="dataInicio" value="#{maskView.dataInicio}" mask="99/99/9999"/>
+        		
+        		<p:outputLabel for="dataFim" value="Data Fim: " />
+        		<p:inputMask id="dataFim" value="#{maskView.dataFim}" mask="99/99/9999"/>
+		        		    		        
+			</h:panelGrid>
+			
+			<p:commandButton action="#{buttonView.buttonAction}" id="consultar" update="" style="margin-right:20px;" icon="fa-search" title="Consultar" value="Consultar" /> 
+    		<p:commandButton action="#{buttonView.buttonAction}" id="inserir" update="" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Inserir" value="Inserir" /> 
+    			
+    		<p:commandButton action="#{buttonView.buttonAction}" id="alterar" update="" style="margin-right:20px;" icon="pi pi-save" title="Alterar" value="Alterar" /> 
+    		<p:commandButton action="#{buttonView.buttonAction}" id="excluir" update="" style="margin-right:20px;" icon="icon-delete2" title="Excluir" value="Excluir" /> 
+    			
+		</h:form>
+        
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
