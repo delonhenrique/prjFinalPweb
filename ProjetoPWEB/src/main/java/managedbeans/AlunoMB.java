@@ -9,13 +9,13 @@ import service.AlunoService;
 @ManagedBean
 @SessionScoped
 public class AlunoMB {
-	private Aluno aluno = new Aluno();
+	private Aluno aluno = new Aluno(null,null);
 	private AlunoService service = new AlunoService();
 	
 	public void salvar() {
 		service.save(aluno);
 		service.closeEntityManager();
-		aluno = new Aluno();
+		aluno = new Aluno(null,null);
 	}
 	
 	public List<Aluno> getAlunos() {

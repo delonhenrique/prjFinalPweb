@@ -6,6 +6,11 @@ public class Avista {
 	private int agencia;
 	private int nCheque;
 	private String preData;
+	private Matricula matricula;
+	
+    public void setMatricula(Matricula matricula) {
+        this.matricula = matricula;
+    }
 	
 	public double getValor() {
 		return valor;

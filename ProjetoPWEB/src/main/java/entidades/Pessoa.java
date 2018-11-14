@@ -23,6 +23,12 @@ public class Pessoa {
 	private String rg;
 	private String email;
 	
+	 // metodo contrutor pedido no exercicio
+	public Pessoa(String cpf, String nome) {
+		super();
+		this.cpf = cpf;
+		this.nome = nome;
+	}
 	public String getNome() {
 		return nome;
 	}

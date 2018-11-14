@@ -6,7 +6,7 @@ public class Aprazo {
 	private String dtVencimento;
 	private double taxaJuros;
 	private int qtdeMensalidade;
-	
+	private Matricula matricula;
 	public double getValor() {
 		return valor;
 	}
@@ -31,5 +31,13 @@ public class Aprazo {
 	public void setQtdeMensalidade(int qtdeMensalidade) {
 		this.qtdeMensalidade = qtdeMensalidade;
 	}
+	public Matricula getMatricula() {
+		return matricula;
+	}
+	public void setMatricula(Matricula matricula) {
+		this.matricula = matricula;
+	}
+	
+
 	
 }
