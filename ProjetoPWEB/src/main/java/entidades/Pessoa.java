@@ -1,10 +1,20 @@
 package entidades;
 
+import java.io.Serializable;
+import java.lang.String;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
-public class Pessoa {
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="nomeDaColunaDescretiva", discriminatorType=DiscriminatorType.STRING,length=20)
+public class Pessoa implements Serializable {
+	
+	private static final long  SerialVersionUIDAdder = 1l;
 	
 	@Id
 	private String cpf;

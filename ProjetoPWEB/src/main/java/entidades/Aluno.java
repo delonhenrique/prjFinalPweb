@@ -1,9 +1,17 @@
 package entidades;
 
-public class Aluno extends Pessoa {
+import java.io.Serializable;
+
+import javax.persistence.*;
+
+
+@Entity
+@DiscriminatorValue(value="Alun")
+public class Aluno extends Pessoa implements Serializable {
 
 	private String escolaridade;
 	private Matricula matricula;
+	private static final long serialVersionUID = 1L;
 	
 	public Matricula getMatricula() {
 		return matricula;
@@ -17,7 +25,6 @@ public class Aluno extends Pessoa {
 
 	public Aluno(String cpf, String nome) {
 		super(cpf, nome);
-		// TODO Auto-generated constructor stub
 	}
 
 

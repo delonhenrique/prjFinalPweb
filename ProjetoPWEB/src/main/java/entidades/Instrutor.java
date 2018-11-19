@@ -1,12 +1,18 @@
 package entidades;
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.persistence.*;
 
-public class Instrutor extends Pessoa {
+
+@Entity
+@DiscriminatorValue(value="Instru")
+public class Instrutor extends Pessoa implements Serializable {
 
 	private ArrayList <Turma> turmas;
 	private String formacao;
 	private String areaAtuacao;
+	private static final long serialVersionUID = 1L;
 	
 	public Instrutor(String cpf, String nome) {
 		super(cpf, nome);

@@ -23,18 +23,19 @@
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
 				<p:outputLabel for="cpf" value="CPF: " />
-        		<p:inputMask id="cpf" value="#{maskView.cpf}" mask="999.999.999-99"/>
+        		<p:inputMask id="cpf" value="#{alunoMB.aluno.cpf}" mask="999.999.999-99"/>
         		
         		<p:outputLabel for="nome" value="Nome: " />
-        		<p:inputText id="nome" />
+        		<p:inputText id="nome" value="#{alunoMB.aluno.nome}" />
         		
         		<p:outputLabel for="dataNasc" value="Data Nascimento: " />
-        		<p:inputMask id="dataNasc" value="#{maskView.dataNasc}" mask="99/99/9999"/>
+        		<p:inputMask id="dataNasc" value="#{alunoMB.aluno.dataNasc}" mask="99/99/9999"/>
         		
         		<p:outputLabel for="sexo" value="Sexo: " />
         		<p:selectOneMenu id="sexo" value="#{selectOneMenuView.sexo}" style="width:125px">
-            		<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
-            		<f:selectItem itemLabel="Feminino" itemValue="Feminino" />          		
+            		<f:selectItem itemLabel="Masculino" itemValue="" />
+            		<f:selectItem itemLabel="Feminino" itemValue="" />
+            		          		
         		</p:selectOneMenu>
         		
         		<p:outputLabel for="estadoCivil" value="Estado Civil: " />
