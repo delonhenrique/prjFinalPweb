@@ -1,0 +1,57 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="Alocar Instrutor" />
+	</ui:define>
+
+	<ui:define name="principal">
+		<style type="text/css">
+    		.value {
+        		font-weight: bold;
+    		}
+		</style>
+		
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				       		
+        		<p:outputLabel for="curso" value="Curso: " />
+        		<p:selectOneMenu id="curso" value="#{selectOneMenuView.curso}" style="width:125px">
+            		<f:selectItem itemLabel="ADS" itemValue="ADS" />            		          		
+        		</p:selectOneMenu>
+        		
+        		<p:outputLabel for="turma" value="Turma: " />
+        		<p:selectOneMenu id="turma" value="#{selectOneMenuView.turma}" style="width:125px">
+            		<f:selectItem itemLabel="Manhã" itemValue="Manhã" />   
+            		<f:selectItem itemLabel="Tarde" itemValue="Tarde" />
+            		<f:selectItem itemLabel="Noite" itemValue="Noite" />         		          		
+        		</p:selectOneMenu>
+        		
+        		<p:outputLabel for="instrutor" value="Curso: " />
+        		<p:selectOneMenu id="instrutor" value="#{selectOneMenuView.instrutor}" style="width:125px">
+            		<f:selectItem itemLabel="Glauco Todesco" itemValue="Glauco Todesco" />            		          		
+        		</p:selectOneMenu>
+        		
+        		<p:outputLabel for="situacao" value="Situação: " />
+        		<p:inputText id="situacao" value="Liberada" disabled="true"/>
+        		
+        		
+        		
+			</h:panelGrid>
+			
+			<p:commandButton action="#{buttonView.buttonAction}" id="alocar" update="" style="margin-right:20px;" icon="fa-search" title="Alocar" value="Alocar" /> 
+    		<p:commandButton action="#{buttonView.buttonAction}" id="liberar" update="" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Liberar" value="Liberar" /> 
+    			
+		</h:form>
+			
+			
+	</ui:define>
+	
+	
+</ui:composition>
