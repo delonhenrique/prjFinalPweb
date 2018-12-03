@@ -12,13 +12,13 @@
 	</ui:define>
 
 	<ui:define name="principal">
-		<h:form>
+		<h:form id="formCurso">
 			<h:panelGrid columns="2" cellpadding="5">
 				<p:outputLabel for="sigla" value="Sigla: " />
-		        <p:inputText id="sigla" />
+		        <p:inputText id="sigla"  value="#{cursoMB.curso.sigla}"/>
 		        
 		        <p:outputLabel for="nomeCurso" value="Nome do curso: " />
-		        <p:inputText id="nomeCurso" />
+		        <p:inputText id="nomeCurso" value="#{cursoMB.curso.nome}"/>
 		        
 		        <p:outputLabel for="cargaHoraria" value="Carga horária: " />
 		        <p:inputText id="cargaHoraria" />
@@ -38,11 +38,20 @@
 			</h:panelGrid>
 			
 			<p:commandButton action="#{buttonView.buttonAction}" id="consultar" update="" style="margin-right:20px;" icon="fa-search" title="Consultar" value="Consultar" /> 
-    		<p:commandButton action="#{buttonView.buttonAction}" id="inserir" update="" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Inserir" value="Inserir" /> 
+    		<p:commandButton action="#{cursoMB.salvar()}"        id="inserir"    style="margin-right:20px;" icon="fa-arrow-circle-down" title="Inserir" value="Inserir" update=":formCurso"/> 
     			
     		<p:commandButton action="#{buttonView.buttonAction}" id="alterar" update="" style="margin-right:20px;" icon="pi pi-save" title="Alterar" value="Alterar" /> 
     		<p:commandButton action="#{buttonView.buttonAction}" id="excluir" update="" style="margin-right:20px;" icon="icon-delete2" title="Excluir" value="Excluir" /> 
     			
+    			
+    			<p:dataTable value="#{CursoMB.cursos}" var="aux">
+				<p:column headerText="Sigla">
+					<p:outputLabel value="#{aux.silga}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="Nome">
+					<p:outputLabel value="#{aux.nome}"></p:outputLabel>
+				</p:column>
+			</p:dataTable>
 		</h:form>
         
 	</ui:define>

@@ -1,7 +1,9 @@
 package entidades;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 public class Curso {
-
+	@Id
 	private String sigla;
 	private String nome;
 	private int cargaHoraria;
@@ -10,6 +12,12 @@ public class Curso {
 	private double valorHoraInstrutor;
 	private String programa;
 	
+	
+	public Curso(String sigla, String nome) {
+		super();
+		this.sigla = sigla;
+		this.nome = nome;
+	}
 	//gets and setters
 	public String getSigla() {
 		return sigla;

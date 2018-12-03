@@ -34,7 +34,7 @@ public class AlunoMB {
 		return aluno;
 	}
 
-	public void setProduto(Aluno aluno) {
+	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
 	}
 
