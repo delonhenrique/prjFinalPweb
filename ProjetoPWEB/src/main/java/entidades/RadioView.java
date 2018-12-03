@@ -1,3 +1,5 @@
+package entidades;
+
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean

@@ -1,8 +1,17 @@
 package entidades;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Turma {
+import javax.persistence.*;
 
+@Entity
+public class Turma implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 	private String siglaTurma;
 	private String descricao;
 	private String dataInicio;
@@ -10,9 +19,21 @@ public class Turma {
 	private String periodo;
 	private int qtdeVagas;
 	private String observacoes;
-    private ArrayList<Matricula> matriculas;
+  
+	@OneToMany
+	@JoinColumn(name="id_turma")
+	private ArrayList<Matricula> matriculas;
+        
+    @ManyToOne
     private Curso curso;
+    
+	@OneToOne
     private Instrutor instrutor;
+    
+	
+    public Turma() {
+		super();
+	}
     
 	public Turma(String siglaTurma, String descricao) {
 		this.siglaTurma = siglaTurma;

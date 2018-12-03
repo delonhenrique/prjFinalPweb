@@ -1,16 +1,42 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Matricula {
+import javax.persistence.*;
 
+@Entity
+public class Matricula implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 	private String data;
 	private int qtdeFaltas;
 	private double nota;
+	//1
+	@OneToMany
+	@JoinColumn(name="id_avista")
 	private ArrayList <Avista> avista;
+	//2
+	@OneToMany
+	@JoinColumn(name="id_aprazo")
 	private ArrayList <Aprazo> aprazo;
+	//3
+	@ManyToOne
 	private Turma turma;
+	//4
+	@OneToOne
+	@JoinColumn(name="id_aluno")
+	private Aluno aluno;
 	
+	
+	public Matricula() {
+		super();
+	}
+
 	public Matricula(String data) {
 		this.data = data;
 		avista = new ArrayList<Avista>();
@@ -50,5 +76,12 @@ public class Matricula {
 	public void setTurma(Turma turma) {
 		this.turma = turma;
 	}
+	
+	public String getData() {
+		return data;
+	}
 
+	public void setData(String data) {
+		this.data = data;
+	}
 }

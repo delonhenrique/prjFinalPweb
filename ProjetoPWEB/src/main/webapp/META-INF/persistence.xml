@@ -10,7 +10,7 @@
 		<class>entidades.Matricula</class>
 		<class>entidades.Turma</class>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBProduto;create=true"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBEscola;create=true"/>
 			<property name="javax.persistence.jdbc.user" value="user"/>
 			<property name="javax.persistence.jdbc.password" value="pwd"/>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>

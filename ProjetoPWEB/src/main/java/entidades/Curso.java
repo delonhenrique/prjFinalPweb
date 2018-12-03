@@ -1,8 +1,16 @@
 package entidades;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Curso {
+import javax.persistence.*;
+
+
+@Entity
+public class Curso implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private String sigla;
 	private String nome;
@@ -12,7 +20,17 @@ public class Curso {
 	private double valorHoraInstrutor;
 	private String programa;
 	
+	@OneToMany
+	@JoinColumn(name="id_curso")
+	private ArrayList <Turma> turmas;
 	
+    public void addTurnma(Turma turma){
+        turmas.add(turma);
+        turma.setCurso(this);
+    }
+	public Curso() {
+		super();
+	}
 	public Curso(String sigla, String nome) {
 		super();
 		this.sigla = sigla;

@@ -1,14 +1,43 @@
 package entidades;
 
-public class Avista {
+import java.io.Serializable;
+import javax.persistence.*;
 
+@Entity
+public class Avista implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 	private double valor;
 	private int agencia;
 	private int nCheque;
 	private String preData;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="id_matricula")
 	private Matricula matricula;
 	
-    public void setMatricula(Matricula matricula) {
+	
+	
+    public Matricula getMatricula() {
+		return matricula;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setMatricula(Matricula matricula) {
         this.matricula = matricula;
     }
 	

@@ -30,7 +30,7 @@
 		        <p:inputText id="programaCurso" />
 		        
 		        <p:outputLabel for="dataVigencia" value="Data de vigência " />
-		        <p:inputMask id="dataVigencia" value="#{maskView.dataVigencia}" mask="99/99/9999"/>
+		        <p:inputMask id="dataVigencia" mask="99/99/9999"/>
 		        
 		        <p:outputLabel for="valorInstrutor" value="Valor hora do instrutor: " />
 		        <p:inputText id="valorInstrutor" />
@@ -44,9 +44,9 @@
     		<p:commandButton action="#{buttonView.buttonAction}" id="excluir" update="" style="margin-right:20px;" icon="icon-delete2" title="Excluir" value="Excluir" /> 
     			
     			
-    			<p:dataTable value="#{CursoMB.cursos}" var="aux">
+    			<p:dataTable value="#{cursoMB.cursos}" var="aux">
 				<p:column headerText="Sigla">
-					<p:outputLabel value="#{aux.silga}"></p:outputLabel>
+					<p:outputLabel value="#{aux.sigla}"></p:outputLabel>
 				</p:column>
 				<p:column headerText="Nome">
 					<p:outputLabel value="#{aux.nome}"></p:outputLabel>

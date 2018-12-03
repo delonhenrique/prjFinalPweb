@@ -28,7 +28,11 @@ public class Pessoa implements Serializable {
 	private String rg;
 	private String email;
 	
-	 // metodo contrutor pedido no exercicio
+	public Pessoa() {
+		super();
+	}
+	
+	// metodo contrutor pedido no exercicio
 	public Pessoa(String cpf, String nome) {
 		super();
 		this.cpf = cpf;

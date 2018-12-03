@@ -4,20 +4,28 @@ import java.util.ArrayList;
 
 import javax.persistence.*;
 
-
 @Entity
 @DiscriminatorValue(value="Instru")
 public class Instrutor extends Pessoa implements Serializable {
 
-	private ArrayList <Turma> turmas;
+
 	private String formacao;
 	private String areaAtuacao;
 	private static final long serialVersionUID = 1L;
 	
+	
+	@OneToMany
+	@JoinColumn(name="id_instrutor") // o Lador forte
+	private ArrayList <Turma> turmas;
+	
+	
+	public Instrutor() {
+		super();
+	}
+
 	public Instrutor(String cpf, String nome) {
 		super(cpf, nome);
 		turmas = new ArrayList<Turma>();
-		// TODO Auto-generated constructor stub
 	}
 
 	public ArrayList<Turma> getTurmas() {
@@ -44,7 +52,5 @@ public class Instrutor extends Pessoa implements Serializable {
 	public void setAreaAtuacao(String areaAtuacao) {
 		this.areaAtuacao = areaAtuacao;
 	}
-
-	
 	
 }
