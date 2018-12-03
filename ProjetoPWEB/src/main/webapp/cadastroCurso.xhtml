@@ -21,19 +21,19 @@
 		        <p:inputText id="nomeCurso" value="#{cursoMB.curso.nome}"/>
 		        
 		        <p:outputLabel for="cargaHoraria" value="Carga horária: " />
-		        <p:inputText id="cargaHoraria" />
+		        <p:inputText id="cargaHoraria" value="#{cursoMB.curso.cargaHoraria}" />
 		        
 		        <p:outputLabel for="valorCurso" value="Valor do curso: " />
-		        <p:inputText id="valorCurso" />
+		        <p:inputText id="valorCurso" value="#{cursoMB.curso.valor}"/>
 		        
 		        <p:outputLabel for="programaCurso" value="Programa do curso: " />
-		        <p:inputText id="programaCurso" />
+		        <p:inputText id="programaCurso" value="#{cursoMB.curso.programa}"/>
 		        
 		        <p:outputLabel for="dataVigencia" value="Data de vigência " />
-		        <p:inputMask id="dataVigencia" mask="99/99/9999"/>
+		        <p:inputMask id="dataVigencia" mask="99/99/9999" value="#{cursoMB.curso.dataVigencia}"/>
 		        
 		        <p:outputLabel for="valorInstrutor" value="Valor hora do instrutor: " />
-		        <p:inputText id="valorInstrutor" />
+		        <p:inputText id="valorInstrutor"  value="#{cursoMB.curso.valorHoraInstrutor}"/>
 		        		    		        
 			</h:panelGrid>
 			
@@ -44,7 +44,7 @@
     		<p:commandButton action="#{buttonView.buttonAction}" id="excluir" update="" style="margin-right:20px;" icon="icon-delete2" title="Excluir" value="Excluir" /> 
     			
     			
-    			<p:dataTable value="#{cursoMB.cursos}" var="aux">
+    		<p:dataTable value="#{cursoMB.cursos}" var="aux">
 				<p:column headerText="Sigla">
 					<p:outputLabel value="#{aux.sigla}"></p:outputLabel>
 				</p:column>

@@ -1,0 +1,52 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="Relatorio Curso" />
+	</ui:define>
+
+	<ui:define name="principal">
+		<style type="text/css">
+    		.value {
+        		font-weight: bold;
+    		}
+		</style>
+		
+		<h:form>
+    		<p:dataTable value="#{cursoMB.cursos}" var="aux">
+				<p:column headerText="Sigla">
+					<p:outputLabel value="#{aux.sigla}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="Nome">
+					<p:outputLabel value="#{aux.nome}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="CargaHoraria">
+					<p:outputLabel value="#{aux.cargaHoraria}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="Valor">
+					<p:outputLabel value="#{aux.valor}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="Nome">
+					<p:outputLabel value="#{aux.dataVigencia}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="Valor Hora Instrutor">
+					<p:outputLabel value="#{aux.valorHoraInstrutor}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="Programa">
+					<p:outputLabel value="#{aux.programa}"></p:outputLabel>
+				</p:column>
+			</p:dataTable> 
+    			
+		</h:form>
+			
+			
+	</ui:define>
+	
+	
+</ui:composition>

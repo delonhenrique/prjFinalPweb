@@ -21,23 +21,23 @@
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
 				<p:outputLabel for="cpf" value="CPF: " />
-        		<p:inputMask id="cpf" value="" mask="999.999.999-99"/>
+        		<p:inputMask id="cpf" value="#{alunoMB.aluno.cpf}" mask="999.999.999-99"/>
         		
         		<p:outputLabel for="nome" value="Nome: " />
-        		<p:inputText id="nome" value="" />
+        		<p:inputText id="nome" value="#{alunoMB.aluno.nome}" />
         		
         		<p:outputLabel for="dataNasc" value="Data Nascimento: " />
-        		<p:inputMask id="dataNasc" value="" mask="99/99/9999"/>
+        		<p:inputMask id="dataNasc" value="#{alunoMB.aluno.dataNasc}" mask="99/99/9999"/>
         		
         		<p:outputLabel for="sexo" value="Sexo: " />
-        		<p:selectOneMenu id="sexo" value="#{selectOneMenuView.sexo}" style="width:125px">
-            		<f:selectItem itemLabel="Masculino" itemValue="" />
-            		<f:selectItem itemLabel="Feminino" itemValue="" />
+        		<p:selectOneMenu id="sexo" value="#{alunoMB.aluno.sexo}" style="width:125px">
+            		<f:selectItem itemLabel="Masculino" itemValue="M" />
+            		<f:selectItem itemLabel="Feminino" itemValue="F" />
             		          		
         		</p:selectOneMenu>
         		
         		<p:outputLabel for="estadoCivil" value="Estado Civil: " />
-        		<p:selectOneMenu id="estadoCivil" value="#{selectOneMenuView.estadoCivil}" style="width:125px">
+        		<p:selectOneMenu id="estadoCivil" value="#{alunoMB.aluno.estadoCivil}" style="width:125px">
             		<f:selectItem itemLabel="Solteiro" itemValue="Solteiro" />
             		<f:selectItem itemLabel="Casado" itemValue="Casado" />
             		<f:selectItem itemLabel="Divorciado" itemValue="Divorciado" />
@@ -45,7 +45,7 @@
         		</p:selectOneMenu>
         		
         		<p:outputLabel for="escolaridade" value="Escolaridade: " />
-        		<p:selectOneMenu id="escolaridade" value="#{selectOneMenuView.sexo}" style="width:125px">
+        		<p:selectOneMenu id="escolaridade" value="#{alunoMB.aluno.escolaridade}" style="width:125px">
             		<f:selectItem itemLabel="Fundamental Incompleto" itemValue="Fundamental Incompleto" />
             		<f:selectItem itemLabel="Fundamental Completo" itemValue="Fundamental Completo" />
             		<f:selectItem itemLabel="Médio Incompleto" itemValue="Médio Incompleto" />
@@ -55,19 +55,19 @@
         		</p:selectOneMenu>
         		
         		<p:outputLabel for="endereco" value="Endereço: " />
-        		<p:inputText id="endereco" />
+        		<p:inputText id="endereco" value="#{alunoMB.aluno.endereco}"/>
         		
         		<p:outputLabel for="num" value="Número: " />
-        		<p:inputText id="num" />
+        		<p:inputText id="num" value="#{alunoMB.aluno.numero}"/>
         		
         		<p:outputLabel for="bairro" value="Bairro: " />
-        		<p:inputText id="bairro" />
+        		<p:inputText id="bairro" value="#{alunoMB.aluno.bairro}"/>
         		
         		<p:outputLabel for="cidade" value="Cidade: " />
-        		<p:inputText id="cidade" />
+        		<p:inputText id="cidade" value="#{alunoMB.aluno.cidade}"/>
         		
         		<p:outputLabel for="estado" value="Estado: " />
-        		<p:selectOneMenu id="estado" value="#{selectOneMenuView.estado}" style="width:125px">
+        		<p:selectOneMenu id="estado" value="#{alunoMB.aluno.estado}" style="width:125px">
             		<f:selectItem itemLabel="AC" itemValue="AC" />
             		<f:selectItem itemLabel="AL" itemValue="AL" />  
             		<f:selectItem itemLabel="AP" itemValue="AP" />  
@@ -99,24 +99,24 @@
         		</p:selectOneMenu>
         		
         		<p:outputLabel for="cep" value="CEP: " />
-        		<p:inputMask id="cep" value="#{maskView.cep}" mask="99999-999"/>
+        		<p:inputMask id="cep" value="#{alunoMB.aluno.cep}" mask="99999-999"/>
         		
         		<p:outputLabel for="telRes" value="Telefone Residencial: " />
-        		<p:inputMask id="telRes" value="#{maskView.telRes}" mask="(99)9999-9999"/>
+        		<p:inputMask id="telRes" value="#{alunoMB.aluno.telefone}" mask="(99)9999-9999"/>
         		
         		<p:outputLabel for="celular" value="Celular: " />
-        		<p:inputMask id="celular" value="#{maskView.celular}" mask="(99)99999-9999"/>
+        		<p:inputMask id="celular" value="#{alunoMB.aluno.celular}" mask="(99)99999-9999"/>
         		
         		<p:outputLabel for="rg" value="RG: " />
-        		<p:inputText id="rg"/>
+        		<p:inputText id="rg" value="#{alunoMB.aluno.rg}"/>
         		
         		<p:outputLabel for="email" value="Email: " />
-        		<p:inputText id="email"/>
+        		<p:inputText id="email" value="#{alunoMB.aluno.email}"/>
         		
 			</h:panelGrid>
 			
 			<p:commandButton action="#{buttonView.buttonAction}" id="consultar" update="" style="margin-right:20px;" icon="fa-search" title="Consultar" value="Consultar" /> 
-    		<p:commandButton action="#{buttonView.buttonAction}" id="inserir" update="" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Inserir" value="Inserir" /> 
+    		<p:commandButton action="#{alunoMB.salvar()}" id="inserir" update="" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Inserir" value="Inserir" /> 
     			
     		<p:commandButton action="#{buttonView.buttonAction}" id="alterar" update="" style="margin-right:20px;" icon="pi pi-save" title="Alterar" value="Alterar" /> 
     		<p:commandButton action="#{buttonView.buttonAction}" id="excluir" update="" style="margin-right:20px;" icon="icon-delete2" title="Excluir" value="Excluir" /> 
