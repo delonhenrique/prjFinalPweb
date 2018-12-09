@@ -1,17 +1,21 @@
 package managedbeans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import entidades.Turma;
-import service.TurmaService;
+import entidades.*;
+import service.*;
 
 @SessionScoped
 @ManagedBean
 public class TurmaMB {
 	private Turma turma = new Turma(null,null);
 	private TurmaService service = new TurmaService();
+	private Curso curso = new Curso();
+	private CursoService cursoService = new  CursoService();
+	private List<Curso> cursos = new ArrayList<>();
 	
 	public void salvar() {
 		service.save(turma);
@@ -26,6 +30,45 @@ public class TurmaMB {
 		return lista;
 	}
 	
+	public List <String> getCursos() {
+		List<String> lista = new ArrayList<>();
+		cursos = cursoService.getAll(Curso.class);
+		cursoService.closeEntityManager();
+		for (int i = 0; i<cursos.size(); i++) {
+			curso = cursos.get(i);
+			lista.add(curso.getSigla());
+		}
+		return lista;
+	}
+	
+	public TurmaService getService() {
+		return service;
+	}
+
+	public void setService(TurmaService service) {
+		this.service = service;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
+	public CursoService getCursoService() {
+		return cursoService;
+	}
+
+	public void setCursoService(CursoService cursoService) {
+		this.cursoService = cursoService;
+	}
+
+	public void setCursos(List<Curso> cursos) {
+		this.cursos = cursos;
+	}
+
 	public Turma getTurma() {
 		return turma;
 	}

@@ -15,9 +15,11 @@
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
 				<p:outputLabel for="curso" value="Curso: " />
-	        	<p:selectOneMenu id="curso" value="#{selectOneMenuView.curso}" effect="fold" editable="true">
+	        	<p:selectOneMenu  id="curso" value="#{turmaMB.cursos}" effect="fold" >
 	            	<f:selectItem itemLabel="Selecione o curso" itemValue="" />
-	            	<f:selectItems value="#{selectOneMenuView.cursos}" />
+	            	<f:selectItems value="#{turmaMB.cursos}"
+	            					var="aux"
+	            					itemValue="#{aux}" itemLabel="#{aux.sigla}" />
 	        	</p:selectOneMenu>
 			
 				<p:outputLabel for="siglaTurma" value="Sigla da turma: " />
