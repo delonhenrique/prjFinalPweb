@@ -18,12 +18,26 @@ public class AlunoMB {
 		aluno = new Aluno(null,null);
 	}
 	
+	public void consultar() {
+		List<Aluno> lista = getAlunos();
+		Aluno resultado = new Aluno(null,null);
+		try {
+			resultado = lista.stream().filter(pessoa -> pessoa.getCpf().equals(aluno.getCpf())).findFirst().get();
+			System.out.println(resultado.getCpf());
+			aluno = resultado;
+			} catch (Exception  e) {
+				System.out.println("CPF não encontrado");
+			}
+	}
+	
 	public List<Aluno> getAlunos() {
 		List <Aluno> lista;
 		lista = service.getAll(Aluno.class);
 		service.closeEntityManager();
 		return lista;
 	}
+	
+	
 
 	
 	public Aluno getAluno() {
