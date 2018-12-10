@@ -24,10 +24,23 @@ public class AlunoMB {
 		try {
 			resultado = lista.stream().filter(pessoa -> pessoa.getCpf().equals(aluno.getCpf())).findFirst().get();
 			System.out.println(resultado.getCpf());
+			System.out.println(resultado.getNome());
 			aluno = resultado;
 			} catch (Exception  e) {
 				System.out.println("CPF não encontrado");
 			}
+	}
+	
+	public Aluno popular() {
+		List<Aluno> lista = getAlunos();
+		Aluno resultado = new Aluno(null,null);
+		try {
+			resultado = lista.stream().filter(pessoa -> pessoa.getCpf().equals(aluno.getCpf())).findFirst().get();
+		}catch (Exception e) {
+			System.out.println("Nao tem aluno");
+			return null;
+		}
+		return resultado;
 	}
 	
 	public List<Aluno> getAlunos() {

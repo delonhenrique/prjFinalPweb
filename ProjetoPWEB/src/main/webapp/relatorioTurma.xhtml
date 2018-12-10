@@ -1,0 +1,42 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+
+	<ui:define name="title">
+		<h:outputText value="Relatorio Turma" />
+	</ui:define>
+
+	<ui:define name="principal">
+		<style type="text/css">
+    		.value {
+        		font-weight: bold;
+		</style>	
+		<h:form>
+    		<p:dataTable value="#{turmaMB.turmas}" var="aux">
+				<p:column headerText="Sigla turma">
+					<p:outputLabel value="#{aux.siglaTurma}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="Descricao">
+					<p:outputLabel value="#{aux.descricao}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="inicio">
+					<p:outputLabel value="#{aux.dataInicio}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="Termino">
+					<p:outputLabel value="#{aux.dataTermino}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="Periodo">
+					<p:outputLabel value="#{aux.periodo}"></p:outputLabel>
+				</p:column>
+				<p:column headerText="Quantidade de vagas">
+					<p:outputLabel value="#{aux.qtdeVagas}"></p:outputLabel>
+				</p:column>				
+			</p:dataTable> 
+		</h:form>
+	</ui:define>
+</ui:composition>

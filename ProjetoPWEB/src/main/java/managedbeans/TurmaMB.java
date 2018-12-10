@@ -23,6 +23,19 @@ public class TurmaMB {
 		turma = new Turma(null,null);
 	}
 	
+	
+	public void consultar(){
+		List<Turma> lista = getTurmas();
+		Turma resultado = new Turma(null,null);
+		try {
+			resultado = lista.stream().filter(turma -> turma.getSiglaTurma().equals(turma.getSiglaTurma())).findFirst().get();
+			System.out.println(resultado.getSiglaTurma());
+			turma = resultado;
+		}catch (Exception e) {
+			System.out.println("SIGLA não encontrado");
+		}
+	}
+	
 	public List<Turma> getTurmas() {
 		List <Turma> lista;
 		lista = service.getAll(Turma.class);

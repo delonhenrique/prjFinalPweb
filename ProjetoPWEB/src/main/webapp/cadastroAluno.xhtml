@@ -17,14 +17,14 @@
         		font-weight: bold;
     		}
 		</style>
-		
 		<h:form>
-			<h:panelGrid columns="2" cellpadding="5">
+			<h:panelGrid id="painel" columns="2" cellpadding="5">
 				<p:outputLabel for="cpf" value="CPF: " />
         		<p:inputMask id="cpf" value="#{alunoMB.aluno.cpf}" mask="999.999.999-99"/>
         		
         		<p:outputLabel for="nome" value="Nome: " />
         		<p:inputText id="nome" value="#{alunoMB.aluno.nome}" />
+        		
         		
         		<p:outputLabel for="dataNasc" value="Data Nascimento: " />
         		<p:inputMask id="dataNasc" value="#{alunoMB.aluno.dataNasc}" mask="99/99/9999"/>
