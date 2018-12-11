@@ -7,12 +7,13 @@ import javax.persistence.*;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(name="nomeDaColunaDescretiva", discriminatorType=DiscriminatorType.STRING,length=20)
-public class Pessoa implements Serializable {
+public abstract class Pessoa implements Serializable {
 	
 	private static final long  serialVersionUID = 1l;
 	
 	@Id
 	private String cpf;
+	
 	private String nome;
 	private String endereco;
 	private String dataNasc;
