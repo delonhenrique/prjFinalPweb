@@ -13,7 +13,7 @@ public class AlunoMB {
 	private AlunoService service = new AlunoService();
 	private boolean disbleQuery = false;
 	private boolean disbleEdit = true;
-	private Aluno buscaAluno = new Aluno();
+	private Aluno buscaAluno = new Aluno(null,null);
 	private String labelBtn = "Inserir";
 
 	public void salvar() {
@@ -31,7 +31,6 @@ public class AlunoMB {
 			labelBtn = "Alterar";
 		} else {
 			labelBtn = "Inserir";
-//			System.out.println("CPF não encontrado");
 		}
 	}
 

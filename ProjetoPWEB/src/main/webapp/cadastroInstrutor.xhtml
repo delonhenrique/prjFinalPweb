@@ -18,25 +18,25 @@
     		}
 		</style>
 		
-		<h:form>
+		<h:form id="form">
 			<h:panelGrid columns="2" cellpadding="5">
 				<p:outputLabel for="cpf" value="CPF: " />
-        		<p:inputMask id="cpf" value="#{instrutorMB.instrutor.cpf}" mask="999.999.999-99"/>
+        		<p:inputMask id="cpf" value="#{instrutorMB.instrutor.cpf}" mask="999.999.999-99" disabled="#{instrutorMB.disbleQuery}"/>
         		
         		<p:outputLabel for="nome" value="Nome: " />
-        		<p:inputText id="nome"  value="#{instrutorMB.instrutor.nome}"/>
+        		<p:inputText id="nome"  value="#{instrutorMB.instrutor.nome}" disabled="#{instrutorMB.disbleEdit}"/>
         		
         		<p:outputLabel for="dataNasc" value="Data Nascimento: " />
-        		<p:inputMask id="dataNasc"   value="#{instrutorMB.instrutor.dataNasc}" mask="99/99/9999"/>
+        		<p:inputMask id="dataNasc"   value="#{instrutorMB.instrutor.dataNasc}" mask="99/99/9999" disabled="#{instrutorMB.disbleEdit}"/>
         		
         		<p:outputLabel for="sexo" value="Sexo: " />
-        		<p:selectOneMenu id="sexo"  value="#{instrutorMB.instrutor.sexo}" style="width:125px">
+        		<p:selectOneMenu id="sexo"  value="#{instrutorMB.instrutor.sexo}" style="width:125px" disabled="#{instrutorMB.disbleEdit}">
             		<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
             		<f:selectItem itemLabel="Feminino" itemValue="Feminino" />          		
         		</p:selectOneMenu>
         		
         		<p:outputLabel for="estadoCivil" value="Estado Civil: " />
-        		<p:selectOneMenu id="estadoCivil"  value="#{instrutorMB.instrutor.estadoCivil}" style="width:125px">
+        		<p:selectOneMenu id="estadoCivil"  value="#{instrutorMB.instrutor.estadoCivil}" style="width:125px" disabled="#{instrutorMB.disbleEdit}">
             		<f:selectItem itemLabel="Solteiro" itemValue="Solteiro" />
             		<f:selectItem itemLabel="Casado" itemValue="Casado" />
             		<f:selectItem itemLabel="Divorciado" itemValue="Divorciado" />
@@ -44,19 +44,19 @@
         		</p:selectOneMenu>
         		
         		<p:outputLabel for="endereco" value="Endereço: " />
-        		<p:inputText id="endereco"   value="#{instrutorMB.instrutor.endereco}"/>
+        		<p:inputText id="endereco"   value="#{instrutorMB.instrutor.endereco}" disabled="#{instrutorMB.disbleEdit}"/>
         		
         		<p:outputLabel for="num" value="Número: " />
-        		<p:inputText id="num"  value="#{instrutorMB.instrutor.numero}" />
+        		<p:inputText id="num"  value="#{instrutorMB.instrutor.numero}" disabled="#{instrutorMB.disbleEdit}"/>
         		
         		<p:outputLabel for="bairro" value="Bairro: " />
-        		<p:inputText id="bairro"  value="#{instrutorMB.instrutor.bairro}" />
+        		<p:inputText id="bairro"  value="#{instrutorMB.instrutor.bairro}" disabled="#{instrutorMB.disbleEdit}"/>
         		
         		<p:outputLabel for="cidade" value="Cidade: " />
-        		<p:inputText id="cidade"  value="#{instrutorMB.instrutor.cidade}" />
+        		<p:inputText id="cidade"  value="#{instrutorMB.instrutor.cidade}" disabled="#{instrutorMB.disbleEdit}"/>
         		
         		<p:outputLabel for="estado" value="Estado: " />
-        		<p:selectOneMenu id="estado"  value="#{instrutorMB.instrutor.estado}" style="width:125px">
+        		<p:selectOneMenu id="estado"  value="#{instrutorMB.instrutor.estado}" style="width:125px" disabled="#{instrutorMB.disbleEdit}">
             		<f:selectItem itemLabel="AC" itemValue="AC" />
             		<f:selectItem itemLabel="AL" itemValue="AL" />  
             		<f:selectItem itemLabel="AP" itemValue="AP" />  
@@ -88,27 +88,27 @@
         		</p:selectOneMenu>
         		
         		<p:outputLabel for="cep" value="CEP: " />
-        		<p:inputMask id="cep"   value="#{instrutorMB.instrutor.cep}" mask="99999-999"/>
+        		<p:inputMask id="cep"   value="#{instrutorMB.instrutor.cep}" mask="99999-999" disabled="#{instrutorMB.disbleEdit}"/>
         		
         		<p:outputLabel for="telRes" value="Telefone Residencial: " />
-        		<p:inputMask id="telRes"  value="#{instrutorMB.instrutor.telefone}" mask="(99)9999-9999"/>
+        		<p:inputMask id="telRes"  value="#{instrutorMB.instrutor.telefone}" mask="(99)9999-9999" disabled="#{instrutorMB.disbleEdit}"/>
         		
         		<p:outputLabel for="celular" value="Celular: " />
-        		<p:inputMask id="celular"   value="#{instrutorMB.instrutor.celular}" mask="(99)99999-9999"/>
+        		<p:inputMask id="celular"   value="#{instrutorMB.instrutor.celular}" mask="(99)99999-9999" disabled="#{instrutorMB.disbleEdit}"/>
         		
         		<p:outputLabel for="rg" value="RG: " />
-        		<p:inputText id="rg"  value="#{instrutorMB.instrutor.rg}"/>
+        		<p:inputText id="rg"  value="#{instrutorMB.instrutor.rg}" disabled="#{instrutorMB.disbleEdit}"/>
         		
         		<p:outputLabel for="email" value="Email: " />
-        		<p:inputText id="email"  value="#{instrutorMB.instrutor.email}"/>
+        		<p:inputText id="email"  value="#{instrutorMB.instrutor.email}" disabled="#{instrutorMB.disbleEdit}"/>
         		
 			</h:panelGrid>
 			
-			<p:commandButton action="#{buttonView.buttonAction}" id="consultar" update="" style="margin-right:20px;" icon="fa-search" title="Consultar" value="Consultar" /> 
-    		<p:commandButton action="#{instrutorMB.salvar}" id="inserir" update="" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Inserir" value="Inserir" /> 
+			<p:commandButton action="#{instrutorMB.consultar}" id="consultar" update="form" style="margin-right:20px;" icon="fa-search" title="Consultar" value="Consultar" disabled="#{instrutorMB.disbleQuery}" /> 
+    		<p:commandButton action="#{instrutorMB.salvar}" id="inserir" update="form" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Inserir" value="#{instrutorMB.labelBtn}" disabled="#{instrutorMB.disbleEdit}" /> 
     			
-    		<p:commandButton action="#{buttonView.buttonAction}" id="alterar" update="" style="margin-right:20px;" icon="pi pi-save" title="Alterar" value="Alterar" /> 
-    		<p:commandButton action="#{buttonView.buttonAction}" id="excluir" update="" style="margin-right:20px;" icon="icon-delete2" title="Excluir" value="Excluir" /> 
+    		<p:commandButton action="#{instrutorMB.apagar}" id="excluir" update="form" style="margin-right:20px;" icon="icon-delete2" title="Excluir" value="Excluir" disabled="#{instrutorMB.disbleEdit}" /> 
+    		<p:commandButton action="#{instrutorMB.limpar}" id="alterar" update="form" style="margin-right:20px;" icon="pi pi-save" title="Limpar" value="Limpar" disabled="#{instrutorMB.disbleEdit}" /> 
     		
 		</h:form>
 			
