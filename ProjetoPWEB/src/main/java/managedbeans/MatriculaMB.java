@@ -1,7 +1,5 @@
 package managedbeans;
 
-import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 

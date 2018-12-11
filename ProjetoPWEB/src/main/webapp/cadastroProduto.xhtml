@@ -25,7 +25,7 @@
 				<p:inputText value="#{produtoMB.produto.preco}" />
 			</p:panelGrid>
 
-			<p:commandButton value="Salvar" action="#{produtoMB.salvar()}"
+			<p:commandButton value="Salvar" action="#{produtoMB.salvar}"
 				update=":formProduto" />
 
 			<p:dataTable value="#{produtoMB.produtos}" var="aux">
