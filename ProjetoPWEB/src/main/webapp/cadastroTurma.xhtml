@@ -56,7 +56,7 @@
     		<p:commandButton action="#{turmaMB.salvar}" id="inserir" update="form" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Inserir" value="#{turmaMB.labelBtn}" disabled="#{turmaMB.disableEdit}" /> 
     			
     		<p:commandButton action="#{turmaMB.apagar}" id="excluir" update="form" style="margin-right:20px;" icon="icon-delete2" title="Excluir" value="Excluir" disabled="#{turmaMB.disableEdit}" /> 
-    		<p:commandButton action="#{turmaMB.limpar}" id="alterar" update="form" style="margin-right:20px;" icon="pi pi-save" title="Limpar" value="Limpar" disabled="#{turmaMB.disableEdit}" /> 
+    		<p:commandButton action="#{turmaMB.limpar}" id="alterar" update="form" style="margin-right:20px;" icon="pi pi-save" title="Limpar" value="Limpar" disabled="#{turmaMB.enableClean}" /> 
     		
 		</h:form>
 

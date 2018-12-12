@@ -19,6 +19,7 @@ public class TurmaMB {
 	private boolean selected = false;
 	private boolean disableQuery = true;
 	private boolean disableEdit = true;
+	private boolean enableClean = !selected;
 	private Turma buscaTurma = new Turma(null,null);
 	private String labelBtn = "Inserir";
 	
@@ -56,6 +57,7 @@ public class TurmaMB {
 		disableQuery = true;
 		disableEdit = true;
 		selected = false;
+		enableClean = !selected;
 		labelBtn = "Inserir";
 		curso = null;
 	}
@@ -64,9 +66,11 @@ public class TurmaMB {
         if (e.getNewValue() == null) {
         	selected = false;
         	disableQuery = true;
+        	enableClean = !selected;
         } else {
         	selected = true;
         	disableQuery = false;
+        	enableClean = !selected;
         }
     }
 	
@@ -149,6 +153,14 @@ public class TurmaMB {
 
 	public void setSelected(boolean isSelected) {
 		this.selected = isSelected;
+	}
+
+	public boolean isEnableClean() {
+		return enableClean;
+	}
+
+	public void setEnableClean(boolean enableClean) {
+		this.enableClean = enableClean;
 	}
 
 	
