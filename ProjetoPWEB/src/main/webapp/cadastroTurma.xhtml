@@ -12,48 +12,54 @@
 	</ui:define>
 
 	<ui:define name="principal">
-		<h:form>
+		<h:form id="form">
+			<h:messages id="errorMessages" style="color:red;margin:8px;" />
 			<h:panelGrid columns="2" cellpadding="5">
 				<p:outputLabel for="curso" value="Curso: " />
-	        	<p:selectOneMenu  id="curso" value="#{turmaMB.cursos}" >
-	            	<f:selectItems value="#{cursoMB.cursos}"
-	            					var="aux"
-	            					itemValue="#{aux}" 
-	            					itemLabel="#{aux.sigla}" />
-	        	</p:selectOneMenu>
-			
+				<p:selectOneMenu id="curso" value="#{turmaMB.curso}"
+					converter="converterCurso" disabled="#{turmaMB.selected}" valueChangeListener="#{turmaMB.escolheCurso}">
+					<f:selectItem itemValue=""
+						itemLabel="Selecione um curso" />
+					<f:selectItems value="#{turmaMB.cursos}" var="aux"
+						itemValue="#{aux}" itemLabel="#{aux.sigla}" />
+					<p:ajax event="change" update="form"/>
+				</p:selectOneMenu>
+
 				<p:outputLabel for="siglaTurma" value="Sigla da turma: " />
-		        <p:inputText id="siglaTurma" value="#{turmaMB.turma.siglaTurma}"/>
-		        
-		        <p:outputLabel for="nomeTurma" value="Nome da turma: " />
-		        <p:inputText id="nomeTurma" value="#{turmaMB.turma.descricao}"/>
-		        
-		        <p:outputLabel for="qtdeVagas" value="Quantidade de vagas: " />
-		        <p:inputText id="qtdeVagas"  value="#{turmaMB.turma.qtdeVagas}"/>
-		        
-		        <p:outputLabel for="periodo" value="Período: " />
-        		<p:selectOneMenu id="periodo"  value="#{turmaMB.turma.periodo}" style="width:125px">
-            		<f:selectItem itemLabel="Manhã" itemValue="Manhã" />
-            		<f:selectItem itemLabel="Tarde" itemValue="Tarde" />
-            		<f:selectItem itemLabel="Noite" itemValue="Noite" />            		       		
-        		</p:selectOneMenu>
-		        		 		        
-		        <p:outputLabel for="dataInicio" value="Data Início: " />
-        		<p:inputMask id="dataInicio"  value="#{turmaMB.turma.dataInicio}" mask="99/99/9999"/>
-        		
-        		<p:outputLabel for="dataFim" value="Data Fim: " />
-        		<p:inputMask id="dataFim"  value="#{turmaMB.turma.dataTermino}" mask="99/99/9999"/>
-		        		    		        
+				<p:inputText id="siglaTurma" value="#{turmaMB.turma.siglaTurma}" disabled="#{turmaMB.disableQuery}"/>
+
+				<p:outputLabel for="nomeTurma" value="Nome da turma: " />
+				<p:inputText id="nomeTurma" value="#{turmaMB.turma.descricao}" disabled="#{turmaMB.disableEdit}"/>
+
+				<p:outputLabel for="qtdeVagas" value="Quantidade de vagas: " />
+				<p:inputText id="qtdeVagas" value="#{turmaMB.turma.qtdeVagas}" disabled="#{turmaMB.disableEdit}"/>
+
+				<p:outputLabel for="periodo" value="Período: " />
+				<p:selectOneMenu id="periodo" value="#{turmaMB.turma.periodo}"
+					style="width:125px" disabled="#{turmaMB.disableEdit}">
+					<f:selectItem itemLabel="Manhã" itemValue="Manhã" />
+					<f:selectItem itemLabel="Tarde" itemValue="Tarde" />
+					<f:selectItem itemLabel="Noite" itemValue="Noite" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="dataInicio" value="Data Início: " />
+				<p:inputMask id="dataInicio" value="#{turmaMB.turma.dataInicio}"
+					mask="99/99/9999" disabled="#{turmaMB.disableEdit}"/>
+
+				<p:outputLabel for="dataFim" value="Data Fim: " />
+				<p:inputMask id="dataFim" value="#{turmaMB.turma.dataTermino}"
+					mask="99/99/9999" disabled="#{turmaMB.disableEdit}"/>
+
 			</h:panelGrid>
-			
-			<p:commandButton action="#{turmaMB.consultar}" id="consultar" update="" style="margin-right:20px;" icon="fa-search" title="Consultar" value="Consultar" /> 
-    		<p:commandButton action="#{turmaMB.salvar}" id="inserir" update="" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Inserir" value="Inserir" /> 
+
+			<p:commandButton action="#{turmaMB.consultar}" id="consultar" update="form" style="margin-right:20px;" icon="fa-search" title="Consultar" value="Consultar" disabled="#{turmaMB.disableQuery}" /> 
+    		<p:commandButton action="#{turmaMB.salvar}" id="inserir" update="form" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Inserir" value="#{turmaMB.labelBtn}" disabled="#{turmaMB.disableEdit}" /> 
     			
-    		<p:commandButton action="#{buttonView.buttonAction}" id="alterar" update="" style="margin-right:20px;" icon="pi pi-save" title="Alterar" value="Alterar" /> 
-    		<p:commandButton action="#{buttonView.buttonAction}" id="excluir" update="" style="margin-right:20px;" icon="icon-delete2" title="Excluir" value="Excluir" /> 
-    			
+    		<p:commandButton action="#{turmaMB.apagar}" id="excluir" update="form" style="margin-right:20px;" icon="icon-delete2" title="Excluir" value="Excluir" disabled="#{turmaMB.disableEdit}" /> 
+    		<p:commandButton action="#{turmaMB.limpar}" id="alterar" update="form" style="margin-right:20px;" icon="pi pi-save" title="Limpar" value="Limpar" disabled="#{turmaMB.disableEdit}" /> 
+    		
 		</h:form>
-        
+
 	</ui:define>
 </ui:composition>
 

@@ -72,19 +72,19 @@ public class AlunoMB {
 		this.aluno = aluno;
 	}
 
-	public boolean isDisbleQuery() {
+	public boolean isDisableQuery() {
 		return disableQuery;
 	}
 
-	public void setDisbleQuery(boolean disableQuery) {
+	public void setDisableQuery(boolean disableQuery) {
 		this.disableQuery = disableQuery;
 	}
 
-	public boolean isDisbleEdit() {
+	public boolean isDisableEdit() {
 		return disableEdit;
 	}
 
-	public void setDisbleEdit(boolean disableEdit) {
+	public void setDisableEdit(boolean disableEdit) {
 		this.disableEdit = disableEdit;
 	}
 

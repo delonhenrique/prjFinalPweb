@@ -1,10 +1,10 @@
 package managedbeans;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ValueChangeEvent;
+
 import entidades.*;
 import service.*;
 
@@ -12,54 +12,81 @@ import service.*;
 @ManagedBean
 public class TurmaMB {
 	private Turma turma = new Turma(null,null);
+	private Instrutor instrutor = null;
+	private Curso curso;
 	private TurmaService service = new TurmaService();
-	private Curso curso = new Curso();
 	private CursoService cursoService = new  CursoService();
-	private List<Curso> cursos = new ArrayList<>();
+	private boolean selected = false;
+	private boolean disableQuery = true;
+	private boolean disableEdit = true;
+	private Turma buscaTurma = new Turma(null,null);
+	private String labelBtn = "Inserir";
 	
 	public void salvar() {
 		service.save(turma);
 		service.closeEntityManager();
 		turma = new Turma(null,null);
+		desabilitarEdicao();
 	}
 	
+	public List<Curso> getCursos() {
+		List<Curso> lista;
+		lista = cursoService.getAll(Curso.class);
+		cursoService.closeEntityManager();
+		return lista;
+	}
 	
-	public void consultar(){
-		List<Turma> lista = getTurmas();
-		Turma resultado = new Turma(null,null);
-		try {
-			resultado = lista.stream().filter(turma -> turma.getSiglaTurma().equals(turma.getSiglaTurma())).findFirst().get();
-			System.out.println(resultado.getSiglaTurma());
-			turma = resultado;
-		}catch (Exception e) {
-			System.out.println("SIGLA não encontrado");
+	public void consultar() {
+		habilitarEdicao();
+		buscaTurma = service.getById(Turma.class, turma.getSiglaTurma());
+		if (buscaTurma != null) {
+			turma = buscaTurma;
+			labelBtn = "Alterar";
+		} else {
+			labelBtn = "Inserir";
 		}
+	}
+	
+	public void habilitarEdicao() {
+		disableQuery = true;
+		disableEdit = false;
+	}
+
+	public void desabilitarEdicao() {
+		disableQuery = true;
+		disableEdit = true;
+		selected = false;
+		labelBtn = "Inserir";
+		curso = null;
+	}
+	
+	public void escolheCurso(ValueChangeEvent e){        
+        if (e.getNewValue() == null) {
+        	selected = false;
+        	disableQuery = true;
+        } else {
+        	selected = true;
+        	disableQuery = false;
+        }
+    }
+	
+	public void apagar() {
+		service.remove(turma);
+		service.closeEntityManager();
+		turma = new Turma(null, null);
+		desabilitarEdicao();
+	}
+
+	public void limpar() {
+		turma = new Turma(null, null);
+		desabilitarEdicao();
 	}
 	
 	public List<Turma> getTurmas() {
-		List <Turma> lista;
+		List<Turma> lista;
 		lista = service.getAll(Turma.class);
 		service.closeEntityManager();
 		return lista;
-	}
-	
-	public List <String> getCursos() {
-		List<String> lista = new ArrayList<>();
-		cursos = cursoService.getAll(Curso.class);
-		cursoService.closeEntityManager();
-		for (int i = 0; i<cursos.size(); i++) {
-			curso = cursos.get(i);
-			lista.add(curso.getSigla());
-		}
-		return lista;
-	}
-	
-	public TurmaService getService() {
-		return service;
-	}
-
-	public void setService(TurmaService service) {
-		this.service = service;
 	}
 
 	public Curso getCurso() {
@@ -70,23 +97,59 @@ public class TurmaMB {
 		this.curso = curso;
 	}
 
-	public CursoService getCursoService() {
-		return cursoService;
-	}
-
-	public void setCursoService(CursoService cursoService) {
-		this.cursoService = cursoService;
-	}
-
-	public void setCursos(List<Curso> cursos) {
-		this.cursos = cursos;
-	}
-
 	public Turma getTurma() {
 		return turma;
 	}
 	public void setTurma(Turma turma) {
 		this.turma = turma;
 	}
+
+
+	public Instrutor getInstrutor() {
+		return instrutor;
+	}
+
+
+	public void setInstrutor(Instrutor instrutor) {
+		this.instrutor = instrutor;
+	}
+
+	
+	
+
+
+	public boolean isDisableQuery() {
+		return disableQuery;
+	}
+
+	public void setDisableQuery(boolean disableQuery) {
+		this.disableQuery = disableQuery;
+	}
+
+	public boolean isDisableEdit() {
+		return disableEdit;
+	}
+
+	public void setDisableEdit(boolean disableEdit) {
+		this.disableEdit = disableEdit;
+	}
+
+	public String getLabelBtn() {
+		return labelBtn;
+	}
+
+
+	public void setLabelBtn(String labelBtn) {
+		this.labelBtn = labelBtn;
+	}
+
+	public boolean isSelected() {
+		return selected;
+	}
+
+	public void setSelected(boolean isSelected) {
+		this.selected = isSelected;
+	}
+
 	
 }
