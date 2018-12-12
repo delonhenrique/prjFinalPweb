@@ -17,26 +17,38 @@
         		font-weight: bold;
     		}
 		</style>
-		
-		<h:form>
-			<h:panelGrid columns="2" cellpadding="5">
-				       		
+		<h:form id="form">
+			<h:messages id="errorMessages" style="color:red;margin:8px;" />
+			<h:panelGrid columns="2" cellpadding="5">				 
         		<p:outputLabel for="curso" value="Curso: " />
-        		<p:selectOneMenu id="curso" value="#{selectOneMenuView.curso}" style="width:125px">
-            		<f:selectItem itemLabel="ADS" itemValue="ADS" />            		          		
-        		</p:selectOneMenu>
+        		<p:selectOneMenu id="curso" value="#{alocarInstrutorMB.curso}"
+					converter="converterCurso" valueChangeListener="#{alocarInstrutorMB.escolheCurso}" disabled="#{alocarInstrutorMB.cursoSelected}">
+					<f:selectItem itemValue=""
+						itemLabel="Selecione um curso" />
+					<f:selectItems value="#{alocarInstrutorMB.cursos}" var="aux"
+						itemValue="#{aux}" itemLabel="#{aux.sigla}" />
+					<p:ajax event="change" update="form"/>
+				</p:selectOneMenu>
         		
         		<p:outputLabel for="turma" value="Turma: " />
-        		<p:selectOneMenu id="turma" value="#{selectOneMenuView.turma}" style="width:125px">
-            		<f:selectItem itemLabel="Manhã" itemValue="Manhã" />   
-            		<f:selectItem itemLabel="Tarde" itemValue="Tarde" />
-            		<f:selectItem itemLabel="Noite" itemValue="Noite" />         		          		
-        		</p:selectOneMenu>
+        		<p:selectOneMenu id="turma" value="#{alocarInstrutorMB.turma}"
+					converter="converterTurma" valueChangeListener="#{alocarInstrutorMB.escolheTurma}" disabled="#{alocarInstrutorMB.turmaSelected}">
+					<f:selectItem itemValue=""
+						itemLabel="Selecione uma turma" />
+					<f:selectItems value="#{alocarInstrutorMB.turmas}" var="aux"
+						itemValue="#{aux}" itemLabel="#{aux.siglaTurma}" />
+					<p:ajax event="change" update="form"/>
+				</p:selectOneMenu>
         		
-        		<p:outputLabel for="instrutor" value="Curso: " />
-        		<p:selectOneMenu id="instrutor" value="#{selectOneMenuView.instrutor}" style="width:125px">
-            		<f:selectItem itemLabel="Glauco Todesco" itemValue="Glauco Todesco" />            		          		
-        		</p:selectOneMenu>
+        		<p:outputLabel for="instrutor" value="Instrutor: " />
+        		<p:selectOneMenu id="instrutor" value="#{alocarInstrutorMB.instrutor}"
+					converter="converterInstrutor" valueChangeListener="#{alocarInstrutorMB.escolheInstrutor}" disabled="#{alocarInstrutorMB.instrutorSelected}">
+					<f:selectItem itemValue=""
+						itemLabel="Selecione uma turma" />
+					<f:selectItems value="#{alocarInstrutorMB.instrutores}" var="aux"
+						itemValue="#{aux}" itemLabel="#{aux.nome}" />
+					<p:ajax event="change" update="form"/>
+				</p:selectOneMenu>
         		
         		<p:outputLabel for="situacao" value="Situação: " />
         		<p:inputText id="situacao" value="Liberada" disabled="true"/>
@@ -46,7 +58,8 @@
 			</h:panelGrid>
 			
 			<p:commandButton action="#{buttonView.buttonAction}" id="alocar" update="" style="margin-right:20px;" icon="fa-search" title="Alocar" value="Alocar" /> 
-    		<p:commandButton action="#{buttonView.buttonAction}" id="liberar" update="" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Liberar" value="Liberar" /> 
+    		<p:commandButton action="#{buttonView.buttonAction}" id="liberar" update="form" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Liberar" value="Liberar" /> 
+    		<p:commandButton action="#{alocarInstrutorMB.limpar}" id="limpar" update="form" style="margin-right:20px;" icon="pi pi-save" title="Limpar" value="Limpar" disabled="false" /> 
     			
 		</h:form>
 			

@@ -53,4 +53,21 @@ public class Instrutor extends Pessoa implements Serializable {
 		this.areaAtuacao = areaAtuacao;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Instrutor other = (Instrutor) obj;
+		if (getCpf() == null) {
+			if (other.getCpf() != null)
+				return false;
+		} else if (!getCpf().equals(other.getCpf()))
+			return false;
+		return true;
+	}
+	
 }

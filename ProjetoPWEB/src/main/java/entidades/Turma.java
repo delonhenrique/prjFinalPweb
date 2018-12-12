@@ -127,5 +127,29 @@ public class Turma implements Serializable{
 	public void setQtdeVagas(int qtdeVagas) {
 		this.qtdeVagas = qtdeVagas;
 	}
-		
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Turma other = (Turma) obj;
+		if (siglaTurma == null) {
+			if (other.siglaTurma != null)
+				return false;
+		} else if (!siglaTurma.equals(other.siglaTurma))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((siglaTurma == null) ? 0 : siglaTurma.hashCode());
+		return result;
+	}
 }

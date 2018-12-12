@@ -11,6 +11,7 @@ public class Curso implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	private String sigla;
 	private String nome;
@@ -78,6 +79,15 @@ public class Curso implements Serializable{
 	}
 	public void setPrograma(String programa) {
 		this.programa = programa;
+	}
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((sigla == null) ? 0 : sigla.hashCode());
+		return result;
 	}
 	
 	@Override
