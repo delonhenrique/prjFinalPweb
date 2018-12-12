@@ -10,38 +10,43 @@
 	<ui:define name="title">
 		<h:outputText value="Cadastrar Curso" />
 	</ui:define>
-
+	
 	<ui:define name="principal">
-		<h:form id="formCurso">
-			<h:panelGrid columns="2" cellpadding="5">
+		<style type="text/css">
+    		.value {
+        		font-weight: bold;
+    		}
+		</style>
+		<h:form id="form">
+			<h:panelGrid id="painel" columns="2" cellpadding="5">
 				<p:outputLabel for="sigla" value="Sigla: " />
-		        <p:inputText id="sigla"  value="#{cursoMB.curso.sigla}"/>
+		        <p:inputText id="sigla"  value="#{cursoMB.curso.sigla}" disabled="#{cursoMB.disableQuery}"/>
 		        
 		        <p:outputLabel for="nomeCurso" value="Nome do curso: " />
-		        <p:inputText id="nomeCurso" value="#{cursoMB.curso.nome}"/>
+		        <p:inputText id="nomeCurso" value="#{cursoMB.curso.nome}" disabled="#{cursoMB.disableEdit}"/>
 		        
 		        <p:outputLabel for="cargaHoraria" value="Carga horária: " />
-		        <p:inputText id="cargaHoraria" value="#{cursoMB.curso.cargaHoraria}" />
+		        <p:inputText id="cargaHoraria" value="#{cursoMB.curso.cargaHoraria}" disabled="#{cursoMB.disableEdit}"/>
 		        
 		        <p:outputLabel for="valorCurso" value="Valor do curso: " />
-		        <p:inputText id="valorCurso" value="#{cursoMB.curso.valor}"/>
+		        <p:inputText id="valorCurso" value="#{cursoMB.curso.valor}" disabled="#{cursoMB.disableEdit}"/>
 		        
 		        <p:outputLabel for="programaCurso" value="Programa do curso: " />
-		        <p:inputText id="programaCurso" value="#{cursoMB.curso.programa}"/>
+		        <p:inputText id="programaCurso" value="#{cursoMB.curso.programa}" disabled="#{cursoMB.disableEdit}"/>
 		        
 		        <p:outputLabel for="dataVigencia" value="Data de vigência " />
-		        <p:inputMask id="dataVigencia" mask="99/99/9999" value="#{cursoMB.curso.dataVigencia}"/>
+		        <p:inputMask id="dataVigencia" mask="99/99/9999" value="#{cursoMB.curso.dataVigencia}" disabled="#{cursoMB.disableEdit}"/>
 		        
 		        <p:outputLabel for="valorInstrutor" value="Valor hora do instrutor: " />
-		        <p:inputText id="valorInstrutor"  value="#{cursoMB.curso.valorHoraInstrutor}"/>
+		        <p:inputText id="valorInstrutor"  value="#{cursoMB.curso.valorHoraInstrutor}" disabled="#{cursoMB.disableEdit}"/>
 		        		    		        
 			</h:panelGrid>
 			
-			<p:commandButton action="#{buttonView.buttonAction}" id="consultar" update="" style="margin-right:20px;" icon="fa-search" title="Consultar" value="Consultar" /> 
-    		<p:commandButton action="#{cursoMB.salvar}"        id="inserir"    style="margin-right:20px;" icon="fa-arrow-circle-down" title="Inserir" value="Inserir" update=":formCurso"/> 
+			<p:commandButton action="#{cursoMB.consultar}" id="consultar" update="form" style="margin-right:20px;" icon="fa-search" title="Consultar" value="Consultar" disabled="#{cursoMB.disableQuery}" /> 
+    		<p:commandButton action="#{cursoMB.salvar}" id="inserir" update="form" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Inserir" value="#{cursoMB.labelBtn}" disabled="#{cursoMB.disableEdit}" /> 
     			
-    		<p:commandButton action="#{buttonView.buttonAction}" id="alterar" update="" style="margin-right:20px;" icon="pi pi-save" title="Alterar" value="Alterar" /> 
-    		<p:commandButton action="#{buttonView.buttonAction}" id="excluir" update="" style="margin-right:20px;" icon="icon-delete2" title="Excluir" value="Excluir" /> 
+    		<p:commandButton action="#{cursoMB.apagar}" id="excluir" update="form" style="margin-right:20px;" icon="icon-delete2" title="Excluir" value="Excluir" disabled="#{cursoMB.disableEdit}" /> 
+    		<p:commandButton action="#{cursoMB.limpar}" id="alterar" update="form" style="margin-right:20px;" icon="pi pi-save" title="Limpar" value="Limpar" disabled="#{cursoMB.disableEdit}" /> 
     			
     			
     		<p:dataTable value="#{cursoMB.cursos}" var="aux">

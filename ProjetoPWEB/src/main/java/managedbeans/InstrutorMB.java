@@ -11,8 +11,8 @@ import service.InstrutorService;
 public class InstrutorMB {
 	private Instrutor instrutor = new Instrutor(null,null);
 	private InstrutorService service = new InstrutorService();
-	private boolean disbleQuery = false;
-	private boolean disbleEdit = true;
+	private boolean disableQuery = false;
+	private boolean disableEdit = true;
 	private Instrutor buscaInstrutor = new Instrutor(null,null);
 	private String labelBtn = "Inserir";
 	
@@ -35,13 +35,13 @@ public class InstrutorMB {
 	}
 	
 	public void habilitarEdicao() {
-		disbleQuery = true;
-		disbleEdit = false;
+		disableQuery = true;
+		disableEdit = false;
 	}
 
 	public void desabilitarEdicao() {
-		disbleQuery = false;
-		disbleEdit = true;
+		disableQuery = false;
+		disableEdit = true;
 		labelBtn = "Inserir";
 	}
 	
@@ -73,19 +73,19 @@ public class InstrutorMB {
 	}
 
 	public boolean isDisbleQuery() {
-		return disbleQuery;
+		return disableQuery;
 	}
 
-	public void setDisbleQuery(boolean disbleQuery) {
-		this.disbleQuery = disbleQuery;
+	public void setDisbleQuery(boolean disableQuery) {
+		this.disableQuery = disableQuery;
 	}
 
 	public boolean isDisbleEdit() {
-		return disbleEdit;
+		return disableEdit;
 	}
 
-	public void setDisbleEdit(boolean disbleEdit) {
-		this.disbleEdit = disbleEdit;
+	public void setDisbleEdit(boolean disableEdit) {
+		this.disableEdit = disableEdit;
 	}
 
 	public Instrutor getBuscaInstrutor() {

@@ -11,8 +11,8 @@ import service.AlunoService;
 public class AlunoMB {
 	private Aluno aluno = new Aluno(null, null);
 	private AlunoService service = new AlunoService();
-	private boolean disbleQuery = false;
-	private boolean disbleEdit = true;
+	private boolean disableQuery = false;
+	private boolean disableEdit = true;
 	private Aluno buscaAluno = new Aluno(null,null);
 	private String labelBtn = "Inserir";
 
@@ -35,13 +35,13 @@ public class AlunoMB {
 	}
 
 	public void habilitarEdicao() {
-		disbleQuery = true;
-		disbleEdit = false;
+		disableQuery = true;
+		disableEdit = false;
 	}
 
 	public void desabilitarEdicao() {
-		disbleQuery = false;
-		disbleEdit = true;
+		disableQuery = false;
+		disableEdit = true;
 		labelBtn = "Inserir";
 	}
 
@@ -73,19 +73,19 @@ public class AlunoMB {
 	}
 
 	public boolean isDisbleQuery() {
-		return disbleQuery;
+		return disableQuery;
 	}
 
-	public void setDisbleQuery(boolean disbleQuery) {
-		this.disbleQuery = disbleQuery;
+	public void setDisbleQuery(boolean disableQuery) {
+		this.disableQuery = disableQuery;
 	}
 
 	public boolean isDisbleEdit() {
-		return disbleEdit;
+		return disableEdit;
 	}
 
-	public void setDisbleEdit(boolean disbleEdit) {
-		this.disbleEdit = disbleEdit;
+	public void setDisbleEdit(boolean disableEdit) {
+		this.disableEdit = disableEdit;
 	}
 
 	public String getLabelBtn() {
