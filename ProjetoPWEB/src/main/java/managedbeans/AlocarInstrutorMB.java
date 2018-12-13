@@ -1,7 +1,6 @@
 package managedbeans;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -23,12 +22,24 @@ public class AlocarInstrutorMB {
 	private boolean turmaSelected = true;
 	private boolean instrutorSelected = true;
 	private boolean disableClean = true;
+	private String situacao = "Liberada";
 	private String labelBtn = "Inserir";
 	
 	public void salvar() {
 		service.save(turma);
 		service.closeEntityManager();
-//		desabilitarEdicao();
+	}
+	
+	public void alocar() {
+		turma.setInstrutor(instrutor);
+		situacao = "Alocada";
+		salvar();
+	}
+	
+	public void liberar() {
+		turma.setInstrutor(null);
+		situacao = "Liberada";
+		salvar();
 	}
 	
 	public List<Curso> getCursos() {
@@ -54,8 +65,17 @@ public class AlocarInstrutorMB {
         	cursoSelected = true;
         	turmaSelected = false;
         }
-        getTurmas();
     }
+	
+	public void verSituacao() {
+		if (turma.getInstrutor() == null) {
+			System.out.println("Liberada");
+			situacao = "Liberada";
+		} else {
+			System.out.println("Alocada");
+			situacao = "Alocada";
+		}
+	}
 	
 	public void escolheTurma(ValueChangeEvent e){        
         if (e.getNewValue() == null) {
@@ -63,9 +83,10 @@ public class AlocarInstrutorMB {
         	turmaSelected = false;
         	instrutorSelected = true;
         } else {
-        	turmaSelected = true;
+        	turmaSelected = false;
         	instrutorSelected = false;
         }
+        System.out.println(e.getNewValue());
     }
 	
 	public void escolheInstrutor(ValueChangeEvent e){        
@@ -85,20 +106,13 @@ public class AlocarInstrutorMB {
 		instrutorSelected = true;
 	}
 	
+	
+	
 	public List<Turma> getTurmas() {
+		
 		List<Turma> lista;
 		lista = service.getAll(Turma.class);
 		service.closeEntityManager();
-//		lista = lista.stream().filter(turmaF -> turmaF.getSiglaTurma().equals(turma.getSiglaTurma())).;
-		if (curso != null)
-		{
-		System.out.println("Com Curso");
-		/*return lista.stream()
-				.filter(turmaF -> turmaF.getCurso().equals(turma.getCurso()))
-				.collect(Collectors.toList());*/
-		} else {
-			System.out.println("Sem Curso");
-		}
 		return lista;
 	}
 
@@ -164,6 +178,14 @@ public class AlocarInstrutorMB {
 
 	public void setDisableClean(boolean disableClean) {
 		this.disableClean = disableClean;
+	}
+
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
 	}
 	
 	

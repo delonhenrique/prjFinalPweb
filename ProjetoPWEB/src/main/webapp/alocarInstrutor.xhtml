@@ -44,21 +44,21 @@
         		<p:selectOneMenu id="instrutor" value="#{alocarInstrutorMB.instrutor}"
 					converter="converterInstrutor" valueChangeListener="#{alocarInstrutorMB.escolheInstrutor}" disabled="#{alocarInstrutorMB.instrutorSelected}">
 					<f:selectItem itemValue=""
-						itemLabel="Selecione uma turma" />
+						itemLabel="Selecione um instrutor" />
 					<f:selectItems value="#{alocarInstrutorMB.instrutores}" var="aux"
 						itemValue="#{aux}" itemLabel="#{aux.nome}" />
 					<p:ajax event="change" update="form"/>
 				</p:selectOneMenu>
         		
         		<p:outputLabel for="situacao" value="Situação: " />
-        		<p:inputText id="situacao" value="Liberada" disabled="true"/>
+        		<p:inputText id="situacao" value="#{alocarInstrutorMB.turma.instrutor}" disabled="true"/>
         		
         		
         		
 			</h:panelGrid>
 			
-			<p:commandButton action="#{buttonView.buttonAction}" id="alocar" update="" style="margin-right:20px;" icon="fa-search" title="Alocar" value="Alocar" /> 
-    		<p:commandButton action="#{buttonView.buttonAction}" id="liberar" update="form" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Liberar" value="Liberar" /> 
+			<p:commandButton action="#{alocarInstrutorMB.alocar}" id="alocar" update="form" style="margin-right:20px;" icon="fa-search" title="Alocar" value="Alocar" /> 
+    		<p:commandButton action="#{alocarInstrutorMB.liberar}" id="liberar" update="form" style="margin-right:20px;" icon="fa-arrow-circle-down" title="Liberar" value="Liberar" /> 
     		<p:commandButton action="#{alocarInstrutorMB.limpar}" id="limpar" update="form" style="margin-right:20px;" icon="pi pi-save" title="Limpar" value="Limpar" disabled="false" /> 
     			
 		</h:form>

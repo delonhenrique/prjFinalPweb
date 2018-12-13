@@ -49,7 +49,6 @@ public abstract class Service <T, I extends Serializable> {
 		return getEntityManager().createQuery("select o from " 
 		+ classe.getSimpleName() + " o").getResultList();
 	}
-//ola mundo
 
 	public EntityManager getEntityManager() {
 	  
