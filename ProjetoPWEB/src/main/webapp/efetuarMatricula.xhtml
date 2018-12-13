@@ -18,39 +18,47 @@
     		}
 		</style>
 		
-		<h:form id="formulario">
+		<h:form id="form">
 			<h:panelGrid columns="2" cellpadding="5">
         		
         		<p:outputLabel for="dataMatricula" value="Data de Matrícula " />
-        		<p:inputMask id="dataMatricula" value="" mask="99/99/9999"/>
+        		<p:inputMask id="dataMatricula" value="#{matriculaMB.matricula.data}" mask="99/99/9999"/>
         		
         		<p:outputLabel for="curso" value="Curso: " />
-        		<p:selectOneMenu id="curso" value="#{selectOneMenuView.curso}" style="width:125px">
-            		<f:selectItem itemLabel="ADS" itemValue="ADS" />            		          		
-        		</p:selectOneMenu>
+        		<p:selectOneMenu id="curso" value="#{matriculaMB.curso}"
+					converter="converterCurso" valueChangeListener="#{matriculaMB.escolheCurso}">
+					<f:selectItem itemValue=""
+						itemLabel="Selecione um curso" />
+					<f:selectItems value="#{matriculaMB.cursos}" var="aux"
+						itemValue="#{aux}" itemLabel="#{aux.sigla}" />
+					<p:ajax event="change" update="form"/>
+				</p:selectOneMenu>
         		
         		<p:outputLabel for="turma" value="Turma: " />
-        		<p:selectOneMenu id="turma" value="#{selectOneMenuView.turma}" style="width:125px">
-            		<f:selectItem itemLabel="Manhã" itemValue="Manhã" />   
-            		<f:selectItem itemLabel="Tarde" itemValue="Tarde" />
-            		<f:selectItem itemLabel="Noite" itemValue="Noite" />         		          		
-        		</p:selectOneMenu>
+        		<p:selectOneMenu id="turma" value="#{alocarInstrutorMB.turma}"
+					converter="converterTurma" valueChangeListener="#{matriculaMB.escolheTurma}" >
+					<f:selectItem itemValue=""
+						itemLabel="Selecione uma turma" />
+					<f:selectItems value="#{matriculaMB.turmas}" var="aux"
+						itemValue="#{aux}" itemLabel="#{aux.siglaTurma}" />
+					<p:ajax event="change" update="form"/>
+				</p:selectOneMenu>
         		
         		<p:outputLabel for="valor" value="Valor: " />
-        		<p:inputText id="valor" disabled="true"/>
+        		<p:inputText id="valor" value="#{matriculaMB.curso.valor}"/>
         		
         		<p:outputLabel for="cpf" value="CPF: " />
-        		<p:inputMask id="cpf" value="#{alunoMB.aluno.cpf}" mask="999.999.999-99"/>
+        		<p:inputMask id="cpf" value="#{matriculaMB.aluno.cpf}" mask="999.999.999-99"/>
         		
         		<p:outputLabel for="nome" value="Nome: " />
-        		<p:inputText id="nome" value="" disabled="true"/>
+        		<p:inputText id="nome" value="#{matriculaMB.aluno.nome}" disabled="true"/>
 
 				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-					<p:outputLabel for="pagamento" value="Pagamento:" />
+					<p:outputLabel for="pagamento" value="Pagamento:" update="form"/>
 					<p:selectOneRadio id="pagamento" value="#{matriculaMB.pagamento}">
 						<f:selectItem itemLabel="À vista" itemValue="true" />
 						<f:selectItem itemLabel="Parcelado" itemValue="false" />
-						<p:ajax listener="#{matriculaMB.show}" update="formulario" />
+						<p:ajax listener="#{matriculaMB.show}" update="form" />
 					</p:selectOneRadio>
 				</h:panelGrid>
 
@@ -95,26 +103,6 @@
     		<p:commandButton action="#{buttonView.buttonAction}" id="alterar" update="" style="margin-right:20px;" icon="pi pi-save" title="Alterar" value="Alterar" /> 
     		<p:commandButton action="#{buttonView.buttonAction}" id="excluir" update="" style="margin-right:20px;" icon="icon-delete2" title="Excluir" value="Excluir" />
 
-
-			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-				<p:outputLabel for="console" value="Console:" />
-				<p:selectOneRadio id="console" value="#{radioView.console}">
-					<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-					<f:selectItem itemLabel="PS4" itemValue="PS4" />
-					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-				</p:selectOneRadio>
-			</h:panelGrid>
-
-			<p:commandButton value="Submit" update="display" icon="pi pi-check" oncomplete="PF('dlg').show()"/>
-
-			<p:dialog modal="true" resizable="false" widgetVar="dlg"
-				header="Values" showEffect="clip">
-				<p:panelGrid columns="2" id="display" columnClasses="label,value">
-					<h:outputText value="Console:" />
-					<h:outputText value="#{radioView.console}" />
-
-				</p:panelGrid>
-			</p:dialog>
 		
 		</h:form>
 			
